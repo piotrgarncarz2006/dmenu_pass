@@ -13,7 +13,7 @@ for pw in passwords_store:
         for i in range(len(pw)):
             passwords.append(dir_name+ '/'+ pw[i][:len(pw[i])- 4])
 
-pw_file= dmenu.show(passwords)
+pw_file= dmenu.show(passwords, prompt= 'pass')
 
 pw_file= os.popen(f'pass {pw_file}').read().split('\n'); pw_file= pw_file[:len(pw_file)- 1]
 pw= pw_file[0]
@@ -22,7 +22,7 @@ pw= pw_file[0]
 pc.copy(pw)
 
 # select option for autotype
-option= dmenu.show(['autotype', 'pass', 'user'])
+option= dmenu.show(['autotype', 'pass', 'user'], prompt= 'option')
 keyboard= Controller()
 
 if option== 'pass':
